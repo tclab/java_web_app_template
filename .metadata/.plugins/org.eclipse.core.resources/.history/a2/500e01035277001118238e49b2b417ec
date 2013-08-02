@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<items>
-
-	<item section="sistPeso" code="prueba" name="Reportes de rueba" url="" parent="" order=""></item>
-	<item section="sistPeso" code="" name="Diagnostico defecto rueda" url="http://localhost/diagnostico/CurvasGrandesRadios.htm" parent="prueba" order=""></item>
-	<item section="sistPeso" code="" name="SPD Cables" url="http://localhost/diagnostico/CurvasPequenosRadios.htm" parent="prueba" order=""></item>
-	<item section="sistPeso" code="" name="modivim" url="http://localhost/diagnostico/ViaTangente.htm" parent="prueba" order=""></item>
-
-</items>

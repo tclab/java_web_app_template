@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<items>
-
-	<!-- SPIDER PARAMETRIZATION -->
-	<item section="FCSpiderParametrization" code="param.spider.general" name="General" url="http://www.evernote.com" parent="" order="1"></item>
-	<item section="FCSpiderParametrization" code="param.spider.epg" name="SpiderEPG" url="http://www.wikipedia.com" parent="" order="1"></item>
-	<item section="FCSpiderParametrization" code="param.spider.od" name="SpiderOD" url="http://www.evernote.com" parent="" order="2"></item>
-
-</items>
