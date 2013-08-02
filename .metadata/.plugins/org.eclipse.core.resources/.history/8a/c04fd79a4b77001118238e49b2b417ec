@@ -1,0 +1,201 @@
+package com.artica.administrator.utils;
+
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Set;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.artica.administrator.bo.MenuItem;
+import com.artica.recommender.conf.PropHandler;
+
+public class MenuHandler {
+
+	private static DocumentBuilderFactory factory;
+	
+	public MenuHandler(){
+		factory = DocumentBuilderFactory.newInstance();
+	}
+	
+	
+	/**
+	 * Gets the general menu
+	 * @return
+	 */
+	public static ArrayList<MenuItem> getMainMenuItemsTest(){
+		Set<String> keys = PropHandler.getKeys();
+		ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+		String menuId = "";
+		String menuName = "";
+		String menuValue = "";
+		
+		
+		//Getting key.
+		for (String key : keys) {
+			String[] keyName = key.split("\\."); 
+			menuId = keyName[0].equals("menuName") ? keyName[1] : "";
+			
+			if (!menuId.equals("")) {
+				menuName = PropHandler.getProp(key);
+
+				// Getting key value.
+				for (String keyValue : keys) {
+					String[] url = keyValue.split("\\.");
+					if (url[0].equals("url") && url[1].equals(menuId)) {
+						menuValue = PropHandler.getProp(keyValue);
+						break;
+					}
+				}
+				menuItems.add(new MenuItem(menuId, menuName, menuValue));
+			}
+		}
+		
+		return menuItems;
+	}
+	
+	
+	/**
+	 * Gets menut items.
+	 * @return
+	 */
+	public static ArrayList<MenuItem> getMenuItems(){
+		
+		
+		return null;
+	}
+	
+	
+	public static ArrayList<MenuItem> getMainMenuItems() {
+		ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+
+		try {
+			URL file = MenuHandler.class.getResource("/mainMenu.xml");
+			Document doc = getDocument(new File(file.getFile()));
+			doc.getDocumentElement().normalize();
+
+			NodeList nodeList = doc.getElementsByTagName(AdminPropHandler.getProperty("mainMenu.rowIdentifier"));
+			
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node nNode = nodeList.item(i);
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					ArrayList<MenuItem> attr = getMenuItemAttributes(eElement);
+					menuItems.addAll(attr);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return menuItems;
+	}
+	
+	public static ArrayList<MenuItem> getPropMenuItems() {
+		ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+
+		try {
+			URL file = MenuHandler.class.getResource("/propsMenu.xml");
+			Document doc = getDocument(new File(file.getFile()));
+			doc.getDocumentElement().normalize();
+
+			NodeList nodeList = doc.getElementsByTagName(AdminPropHandler.getProperty("mainMenu.rowIdentifier"));
+			
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node nNode = nodeList.item(i);
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					ArrayList<MenuItem> attr = getMenuItemAttributes(eElement);
+					menuItems.addAll(attr);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return menuItems;
+	}
+	
+	/**
+	 * Get the childrens of each item.
+	 * @param attr
+	 */
+	private static void getChildrens(ArrayList<MenuItem> attr){
+		//TODO: pasar por los elementos y guardar los que tienen padre en sus respectivos padres.
+		
+		for (MenuItem menuItem : attr) {
+			for (MenuItem child : attr) {
+				
+			}
+		}
+		
+	}
+	
+	/**
+	 * Gets the attributes of the vod content
+	 * @param eElement
+	 * @return
+	 */
+	private static ArrayList<MenuItem> getMenuItemAttributes(Element eElement) {
+		ArrayList<MenuItem> vodMeta = new ArrayList<MenuItem>();
+
+		try {
+			NamedNodeMap attrList = eElement.getAttributes();
+			MenuItem menuItem = new MenuItem();
+			for (int i = 0; i < attrList.getLength(); i++) {
+				Node attr = attrList.item(i);
+				
+				if (attr.getNodeValue() != null && !attr.getNodeValue().equals("")) {
+					String nodeName = attr.getNodeName();
+					if (nodeName.equals("code")) {
+						menuItem.setCode(attr.getNodeValue());
+					} else if (nodeName.equals("name")){
+						menuItem.setName(attr.getNodeValue());
+					} else if (nodeName.equals("order")){
+						menuItem.setOrder(attr.getNodeValue());
+					} else if (nodeName.equals("section")){
+						menuItem.setSection(attr.getNodeValue());
+					} else if (nodeName.equals("url")){
+						menuItem.setUrl(attr.getNodeValue());
+					} else if (nodeName.equals("parent")){
+						menuItem.setParent(attr.getNodeValue());
+					} 
+				}
+			}
+			vodMeta.add(menuItem);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return vodMeta;
+	}
+	
+	/**
+	 * Processes a XML and return a document object.
+	 */
+	public static Document getDocument(File f) throws Exception {
+		factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document doc = null;
+		try {
+			doc = builder.parse(f);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return doc;
+	}
+	
+	//TEST
+	public static void main(String args[]){
+//		getMainMenuItemsFrmXml();
+	}
+}

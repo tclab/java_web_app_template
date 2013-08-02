@@ -1,0 +1,227 @@
+package com.artica.administrator.utils;
+
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Set;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.artica.administrator.bo.MenuItem;
+import com.artica.recommender.conf.PropHandler;
+
+public class MenuHandler {
+
+	private static DocumentBuilderFactory factory;
+	
+	public MenuHandler(){
+		factory = DocumentBuilderFactory.newInstance();
+	}
+	
+	
+	/**
+	 * Gets the general menu
+	 * @return
+	 */
+	public static ArrayList<MenuItem> getMainMenuItems(){
+		Set<String> keys = PropHandler.getKeys();
+		ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+		String menuId = "";
+		String menuName = "";
+		String menuValue = "";
+		
+		
+		//Getting key.
+		for (String key : keys) {
+			String[] keyName = key.split("\\."); 
+			menuId = keyName[0].equals("menuName") ? keyName[1] : "";
+			
+			if (!menuId.equals("")) {
+				menuName = PropHandler.getProp(key);
+
+				// Getting key value.
+				for (String keyValue : keys) {
+					String[] url = keyValue.split("\\.");
+					if (url[0].equals("url") && url[1].equals(menuId)) {
+						menuValue = PropHandler.getProp(keyValue);
+						break;
+					}
+				}
+				menuItems.add(new MenuItem(menuId, menuName, menuValue));
+			}
+		}
+		
+		return menuItems;
+	}
+	
+	
+	/**
+	 * Gets menut items.
+	 * @return
+	 */
+	public static ArrayList<MenuItem> getMenuItems(){
+		
+		
+		return null;
+	}
+	
+	
+	public static ArrayList<MenuItem> getMainMenuItemsFromXml() {
+		ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+
+		try {
+			URL file = MenuHandler.class.getResource("/mainMenu.xml");
+			Document doc = getDocument(new File(file.getFile()));
+			doc.getDocumentElement().normalize();
+
+			NodeList nodeList = doc.getElementsByTagName(AdminPropHandler.getProperty("mainMenu.rowIdentifier"));
+			
+//			String attrName = PropHandler.getDbProp("vod.videoPrice.attrName");
+//			String idName = PropHandler.getDbProp("vod.idAttrname");
+			
+			//Video list
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node nNode = nodeList.item(i);
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+
+					ArrayList<MenuItem> attr = getMenuItemAttributes(eElement);
+					
+//					String vodPk = "";
+//					
+//					for (MenuItem videoMetadata : attr) {
+//						if (videoMetadata.getKeyName().equals(idName)) {
+//							vodPk = videoMetadata.getKeyValue();
+//							
+//							//Get the price of the content.
+//							try {
+//								MenuItem priceMeta = new MenuItem(attrName, parsePrice(vodPk), null, vodPk);
+//								attr.add(priceMeta);
+//							} catch (Exception e) {
+//								e.printStackTrace();
+//							}
+//							break;
+//						}
+//					}
+//					
+//					// Attributes
+//					for (MenuItem videoMetadata : attr) {
+//						if (!vodPk.equals("")) {
+//							videoMetadata.setVodPk(vodPk);
+//						}
+//					}
+					
+					menuItems.addAll(attr);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return menuItems;
+	}
+	
+	/**
+	 * Gets the attributes of the vod content
+	 * @param eElement
+	 * @return
+	 */
+	private static ArrayList<MenuItem> getMenuItemAttributes(Element eElement) {
+		ArrayList<MenuItem> vodMeta = new ArrayList<MenuItem>();
+
+		try {
+			NamedNodeMap attrList = eElement.getAttributes();
+			for (int i = 0; i < attrList.getLength(); i++) {
+				Node attr = attrList.item(i);
+				if (attr.getNodeValue() != null && !attr.getNodeValue().equals("")) {
+					System.out.println("name: " + attr.getNodeName() + ", value: "+ attr.getNodeValue());
+					
+					MenuItem menuItem = new MenuItem();
+					
+					String nodeName = attr.getNodeName();
+					if (nodeName.equals("code")) {
+						menuItem.setCode(attr.getNodeValue());
+					} else if (nodeName.equals("name")){
+						menuItem.setName(attr.getNodeValue());
+					} else if (nodeName.equals("order")){
+						menuItem.setOrder(attr.getNodeValue());
+					} else if (nodeName.equals("section")){
+						menuItem.setSection(attr.getNodeValue());
+					} else if (nodeName.equals("url")){
+						menuItem.setUrl(attr.getNodeValue());
+					} else if (nodeName.equals("parent")){
+						menuItem.setParent(attr.getNodeValue());
+					} 
+					
+					vodMeta.add();
+				}
+			}
+			
+			//Child nodes (extrafields, attachments, chapters, metadata)
+//			NodeList childNodes = eElement.getChildNodes();
+//			for (int i = 0; i < childNodes.getLength(); i++) {
+//				Node childNode = childNodes.item(i);
+//				
+//				//Iterates over extrafields and attachments childnodes (Extrafield,Attachment)
+//				NodeList subChildNodes = childNode.getChildNodes();
+//				for (int j = 0; j < subChildNodes.getLength(); j++) {
+//					Node subChild = subChildNodes.item(j);
+//					
+//					String childType = PropHandler.getDaoProp(subChild.getNodeName());
+//					
+//					if (subChild.getNodeType() == Node.ELEMENT_NODE) {
+//						NamedNodeMap subChildAttrs =  subChild.getAttributes();
+//						VodContentMetadata pageData = new VodContentMetadata();
+//						pageData.setType(childType);
+//						
+//						String propValue = "";
+//						for (int k = 0; k < subChildAttrs.getLength(); k++) {
+//							Node subChildAttr = subChildAttrs.item(k);
+//							propValue += (k != 0 ? "{,}" : "");
+//							propValue += subChildAttr.getNodeName() + "{=}" + subChildAttr.getNodeValue();
+//						}
+//						
+//						propValue = new String(propValue.getBytes(), "UTF-8");
+//						vodMeta.add(new VodContentMetadata(subChild.getNodeName(), propValue, childType, null));
+//					}
+//				}
+//			}
+			
+//			if (page != null && !page.equals("")) {
+//				vodMeta.add(new VodContentMetadata(PropHandler.getSpiderProp("spider.vod"), page, type, null));
+//			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return vodMeta;
+	}
+	
+	/**
+	 * Processes a XML and return a document object.
+	 */
+	public static Document getDocument(File f) throws Exception {
+		factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document doc = null;
+		try {
+			doc = builder.parse(f);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return doc;
+	}
+	
+	//TEST
+	public static void main(String args[]){
+		getMainMenuItemsFromXml();
+	}
+}

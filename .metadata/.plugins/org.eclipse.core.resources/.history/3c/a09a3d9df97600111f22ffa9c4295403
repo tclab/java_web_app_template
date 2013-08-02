@@ -1,0 +1,30 @@
+<!-- Pagetitle -->
+<!-- <h1 class="pagetitle">Loggin</h1> -->
+
+<!-- Content unit - One column -->
+<!-- <h1 class="block">1 - Configuration form</h1> -->
+<div class="column1-unit">
+	<div class="contactform">
+		<p class="center" style="float:left"><img class="center" src=<c:url value="/img/metro-login.jpg"/> alt="Metro de medellín" title="Metro de medellín" /></p>
+		<form name="urls" action="FCInit.do.login" method="post">
+			
+			<fieldset>
+				<legend>&nbsp;Login&nbsp;</legend>
+				
+				<p>
+					<label for="contact_title" class="left">ID de usuario:</label> 
+					<input type="text" name="user" id="user" class="field" value="${user}" tabindex="1" />
+				</p>
+				<p>
+					<label for="contact_firstname" class="left">Contraseña:</label>
+					<input type="password" name="password" id="password" class="field" value="${password}" tabindex="1" />
+				</p>
+				
+				
+				<p>
+					<input type="submit" name="submit" id="submit" class="button" value="Login" tabindex="6" />
+				</p>
+			</fieldset>
+		</form>
+	</div>
+</div>
