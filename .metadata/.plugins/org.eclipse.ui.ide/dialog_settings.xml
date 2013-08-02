@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="175" key="DIALOG_Y_ORIGIN"/>
+		<item value="369" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="false" key="ShowDerived"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode path=&quot;/conf/src/com/artica/recommender/dao/PropsHandlerDAO.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Metro/props/AdminPropHandler.properties&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Metro/WebContent/WEB-INF/controller-servlet.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Metro/src/views.properties&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Metro/WebContent/jsp/init/admin.jsp&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Metro/WebContent/jsp/general/template.jsp&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Metro/src/com/artica/administrator/fc/FCInit.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Metro/WebContent/jsp/general/menu.jsp&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Metro/src/com/artica/administrator/utils/MenuHandler.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Metro/src/com/artica/administrator/bo/MenuItem.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<section name="DialogBoundsSettings">
+			<item value="654" key="DIALOG_WIDTH"/>
+			<item value="29" key="DIALOG_Y_ORIGIN"/>
+			<item value="280" key="DIALOG_HEIGHT"/>
+			<item value="313" key="DIALOG_X_ORIGIN"/>
+			<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		</section>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+	</section>
+	<section name="CleanDialogSettings">
+		<item value="613" key="DIALOG_WIDTH"/>
+		<item value="29" key="DIALOG_Y_ORIGIN"/>
+		<item value="1700" key="DIALOG_X_ORIGIN"/>
+		<item value="364" key="DIALOG_HEIGHT"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+	</section>
+</section>

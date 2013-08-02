@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+
+	<item section="" code="inicio" name="Inicio" url="FCInit.do.login" parent="" order=""></item>
+	<item section="" code="sistPeso" name="Sistema de pesajes v2.0" url="FCInit.do.sistPesaje" parent="" order=""></item>
+	<item section="" code="diagno" name="Diagno-defecto y visión" url="FCInit.do.diagnoDefecto" parent="" order=""></item>
+	<item section="" code="spd" name="SPD" url="FCInit.do.spd" parent="" order=""></item>
+	<item section="" code="admin" name="Admin" url="FCInit.do.admin" parent="" order=""></item>
+
+</items>

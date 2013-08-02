@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+
+	<item section="" code="" name="Diagnostico defecto rueda" url="http://localhost/diagnostico/CurvasGrandesRadios.htm" parent="" order=""></item>
+	<item section="" code="" name="SPD Cables" url="http://localhost/diagnostico/CurvasPequenosRadios.htm" parent="" order=""></item>
+	<item section="" code="" name="modivim" url="http://localhost/diagnostico/ViaTangente.htm" parent="" order=""></item>
+	<item section="" code="" name="Diagnostico vision rueda" url="http://localhost/diagnostico/ViaTangente.htm" parent="" order=""></item>
+	<item section="" code="" name="ConteoUsuarios MM" url="http://localhost/diagnostico/ViaTangente.htm" parent="" order=""></item>
+	<item section="" code="" name="Gestion y mantenimiento" url="http://localhost/diagnostico/ViaTangente.htm" parent="" order=""></item>
+	<item section="" code="" name="SPD Trenes" url="http://localhost/diagnostico/ViaTangente.htm" parent="" order=""></item>
+
+</items>

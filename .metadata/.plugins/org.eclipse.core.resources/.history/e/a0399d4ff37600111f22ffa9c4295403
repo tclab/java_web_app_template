@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+
+	<!-- SPIDER PARAMETRIZATION -->
+	<item section="FCSpiderParametrization" code="param.spider.general" name="Diagnostico defecto rueda" url="http://www.evernote.com" parent="" order="1"></item>
+	<item section="FCSpiderParametrization" code="param.spider.epg" name="SPD Cables" url="http://www.wikipedia.com" parent="" order="1"></item>
+	<item section="FCSpiderParametrization" code="param.spider.od" name="modivim" url="http://www.evernote.com" parent="" order="2"></item>
+	<item section="FCSpiderParametrization" code="param.spider.rating" name="Diagnostico vision rueda" url="http://www.wikipedia.com" parent="" order="3"></item>
+	<item section="FCSpiderParametrization" code="param.spider.channel" name="ConteoUsuarios MM" url="http://www.evernote.com" parent="" order="4"></item>
+	<item section="FCSpiderParametrization" code="param.spider.vod" name="Gestion y mantenimiento" url="http://www.wikipedia.com" parent="" order="5"></item>
+	<item section="FCSpiderParametrization" code="param.spider.vod" name="SPD Trenes" url="http://www.wikipedia.com" parent="" order="5"></item>
+
+</items>

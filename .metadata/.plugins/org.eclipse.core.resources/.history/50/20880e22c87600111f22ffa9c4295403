@@ -1,0 +1,19 @@
+package com.artica.administrator.bo;
+
+import java.util.ArrayList;
+
+public class MenuItem {
+
+	private String id;
+	private String name;
+	private String url;
+	private String section;
+	private String parent;
+	private String order;
+	private String code;
+	private ArrayList<MenuItem> childItems;
+	
+	
+	
+	
+}
