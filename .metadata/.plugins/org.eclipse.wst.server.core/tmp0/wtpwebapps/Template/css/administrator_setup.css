@@ -45,7 +45,7 @@
 
 .sitemessage {width:350px; height:90px; position:absolute; z-index:1; margin:58px 0 0 40px; color:rgb(100,100,100); /*xoverflow:visible !important /*Activate if Firefox print problems*/; overflow:hidden /*IE6*/;}
 .sitemessage h1 {width:350px; text-align:left; font-size:230%;}
-.sitemessage h2 {float:left; width:350px; margin:37px 0 0 0; text-align:left; line-height:100%; font-size:160%;}
+.sitemessage h2 {float:left; width:350px; margin:52px 0 0 0; text-align:left; line-height:100%; font-size:160%;}
 .sitemessage h3 {float:right; width:270px; margin:10px 0 0 0; text-align:right; font-size:140%;}
 .sitemessage h3 a {text-decoration:none; color:rgb(234,239,247);}
 .sitemessage h3 a:hover {text-decoration:none; color:rgb(50,50,50);}

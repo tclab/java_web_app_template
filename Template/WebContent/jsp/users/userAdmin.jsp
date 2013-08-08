@@ -21,13 +21,14 @@
 					<label for="password" class="left">Password:</label> 
 					<input type="text" name="password" id="password" class="field" value="" tabindex="1" />
 				</p>
-				<p>
-					<label for="user" class="left">USER</label> 
-					<input type="checkbox" name="user" id="user" class="left" value="ROLE_USER" />
-				</p>
+<!-- 				<p> -->
+<!-- 					<label for="user" class="left">USER</label>  -->
+<!-- 					<input type="checkbox" name="user" id="user" class="left" value="ROLE_USER" /> -->
+<!-- 				</p> -->
 				<p>
 					<label for="admin" class="left">ADMIN</label> 
-					<input type="checkbox" name="admin" id="admin" onchange="javascript:selectAdminRole();" class="left" value="ROLE_ADMIN" />
+<!-- 					<input type="checkbox" name="admin" id="admin" onchange="javascript:selectAdminRole();" class="left" value="ROLE_ADMIN" /> -->
+					<input type="checkbox" name="admin" id="admin" class="left" value="ROLE_ADMIN" />
 				</p>
 				<p>
 					<input type="hidden" name="pageMetaId" id="pageMetaId" value="" />
@@ -48,14 +49,12 @@
 			<th class="top" scope="col">Username</th>
 			<th class="top" scope="col">Password</th>
 			<th class="top" scope="col">Admin</th>
-			<th class="top" scope="col">User</th>
 		</tr>
 		<c:forEach items="${userList}" var="userInfo">
-			<tr onclick="javascript:selectUser('${userInfo.username}','${userInfo.password}', '${userInfo.admin}', '${userInfo.user}');">
+			<tr onclick="javascript:selectUser('${userInfo.username}','${userInfo.password}', '${userInfo.admin}');">
 				<td><c:out value="${userInfo.username}" /></td>
 				<td><c:out value="${userInfo.password}" /></td>
 				<td><c:out value="${userInfo.admin}" /></td>
-				<td><c:out value="${userInfo.user}" /></td>
 			</tr>
 		</c:forEach>
 	</table>

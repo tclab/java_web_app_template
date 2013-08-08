@@ -22,7 +22,7 @@
 </script>
 
 <!-- Pagetitle -->
-<h1 class="pagetitle">Spider OD</h1>
+<h1 class="pagetitle">Opcion 2</h1>
 
 <!-- Content unit - One column -->
 <!-- <h1 class="block">1 - Configuration form</h1> -->

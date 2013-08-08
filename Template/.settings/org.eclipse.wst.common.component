@@ -3,6 +3,7 @@
     <wb-module deploy-name="Template">
         <wb-resource deploy-path="/" source-path="/WebContent"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/props"/>
         <property name="java-output-path" value="/Template/build/classes"/>
         <property name="context-root" value="Template"/>
     </wb-module>

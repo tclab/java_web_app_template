@@ -1,0 +1,53 @@
+1375801626270	Rename local variable 'url'
+1375803103115	Rename resource 'artica_marca-agua.png'
+1375804261383	Rename package 'com.artica.administrator.bo.menuBO'
+1375804297565	Rename package 'com.artica.administrator.dao.exceptions'
+1375804306796	Rename package 'com.artica.administrator.dao.LogginDAO'
+1375804323072	Rename package 'com.artica.administrator.utils'
+1375804330821	Rename package 'com.artica.administrator.fc.users'
+1375804339517	Rename package 'com.artica.administrator.fc.spiders'
+1375804346285	Rename package 'com.artica.administrator.fc.logViewer'
+1375804351916	Rename package 'com.artica.administrator.fc.engine'
+1375804358887	Rename package 'com.artica.administrator.fc'
+1375804364880	Rename package 'com.artica.administrator.dao.utils'
+1375804374892	Rename package 'com.artica.administrator.dao.menuDAO'
+1375804522772	Rename package 'com.sophos.administrator'
+1375804550806	Delete element
+1375804686517	Move compilation units
+1375804701813	Delete element
+1375804735615	Delete element
+1375804755262	Rename package 'com.sophos.administrator.fc'
+1375804808602	Move compilation unit
+1375804841905	Rename package 'com.sophos.administrator.dao.LogginDAO'
+1375804880760	Rename package 'com.sophos.administrator.dao.menuDAO'
+1375804887761	Rename package 'com.sophos.administrator.bo.menuBO'
+1375805060390	Delete element
+1375805630217	Move 1 resources to 'Template'
+1375805902896	Delete element
+1375806467988	Move 1 resources to 'src'
+1375806479261	Rename resource 'ConfPropHandler.properties'
+1375807386321	Rename package 'com.sophos.administrator.dao.engine'
+1375821483960	Rename local variable 'properties'
+1375825393207	Rename local variable 'loadPrograms'
+1375826165237	Delete element
+1375826169757	Delete element
+1375826188883	Delete element
+1375826194710	Delete element
+1375826950064	Rename package 'com.sophos.administrator.fc.props'
+1375828692640	Rename package 'com.sophos.administrator.bo.menu'
+1375828699544	Rename package 'com.sophos.administrator.bo.props'
+1375828710337	Rename package 'com.sophos.administrator.utils'
+1375828719627	Rename package 'com.sophos.administrator.props'
+1375828727458	Rename package 'com.sophos.administrator.log'
+1375828734836	Rename package 'com.sophos.administrator.fc.users'
+1375829269935	Rename package 'com.sophos.administrator.fc.spiders'
+1375829276696	Rename package 'com.sophos.administrator.fc.session'
+1375829282572	Rename package 'com.sophos.administrator.fc.init'
+1375829288803	Rename package 'com.sophos.administrator.dao.utils'
+1375829294224	Rename package 'com.sophos.administrator.dao.users'
+1375829300387	Rename package 'com.sophos.administrator.dao.session'
+1375829306162	Rename package 'com.sophos.administrator.dao.props'
+1375829312948	Rename package 'com.sophos.administrator.dao.menu'
+1375829318202	Rename package 'com.sophos.administrator.dao.exceptions'
+1375829336852	Rename package 'com.sophos.administrator.conf'
+1375829343221	Rename package 'com.sophos.administrator.bo.users'

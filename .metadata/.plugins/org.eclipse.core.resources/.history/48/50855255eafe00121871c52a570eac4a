@@ -1,0 +1,22 @@
+package com.sophos.administrator.dao.exceptions;
+
+public class ConnectionException extends Exception {
+	private static final long serialVersionUID = 6563337496412181831L;
+	
+	public ConnectionException() {
+		super();		
+	}
+
+	public ConnectionException(String message, Throwable cause) {
+		super(message, cause);		
+	}
+
+	public ConnectionException(String message) {
+		super(message);
+	}
+
+	public ConnectionException(Throwable cause) {
+		super(cause);		
+	}	
+}
+

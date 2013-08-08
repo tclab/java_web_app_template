@@ -1,0 +1,23 @@
+conf.location = /home/juan/Desktop/props/
+prop.file.name = proyect.properties
+
+#DATABASE PROPERTIES
+#SQLSERVER
+#recommender.host = localhost
+#recommender.port = 1433
+#recommender.dataBaseName = test_reports
+#recommender.usr = Juan.Toro
+#recommender.pss = Cambiar147*
+
+#recommender.host = 127.0.0.1
+#recommender.port = 1433
+#recommender.dataBaseName = test_reports
+#recommender.usr = Juan.Toro
+#recommender.pss = Cambiar147*
+
+# MYSQL
+recommender.host = localhost
+recommender.port = 3306
+recommender.dataBaseName = test_reports
+recommender.usr = root
+recommender.pss = root

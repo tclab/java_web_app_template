@@ -23,7 +23,7 @@
 
 
 <!-- Pagetitle -->
-<h1 class="pagetitle">Spider Epg</h1>
+<h1 class="pagetitle">Opcion 1</h1>
 
 <!-- Content unit - One column -->
 <h1 class="block">Parameters</h1>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="312" key="DIALOG_WIDTH"/>
-		<item value="178" key="DIALOG_Y_ORIGIN"/>
-		<item value="0" key="DIALOG_X_ORIGIN"/>
-		<item value="438" key="DIALOG_HEIGHT"/>
-		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="257" key="DIALOG_WIDTH"/>
+		<item value="294" key="DIALOG_Y_ORIGIN"/>
+		<item value="920" key="DIALOG_X_ORIGIN"/>
+		<item value="380" key="DIALOG_HEIGHT"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
@@ -13,24 +13,26 @@
 		<item value="false" key="isRegEx"/>
 		<item value="true" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="showVi" key="selection"/>
+		<item value="com.sophos.reports" key="selection"/>
 		<list key="findhistory">
-			<item value="showvi"/>
-			<item value="showView"/>
-			<item value="contactform"/>
-			<item value="nav3-grid"/>
-			<item value="first"/>
-			<item value="main-navigation "/>
-			<item value="panel"/>
-			<item value="menu"/>
+			<item value="com.sophos.administrator"/>
+			<item value="adminitration"/>
+			<item value="app_users"/>
+			<item value="engime"/>
+			<item value="com.artica"/>
+			<item value="reportServer"/>
+			<item value="`"/>
+			<item value="`recomendador`.`"/>
 		</list>
 		<list key="replacehistory">
-			<item value="this."/>
+			<item value="com.sophos.reports"/>
+			<item value="users"/>
+			<item value="com.sophos"/>
 			<item value=""/>
+			<item value="130,0,36"/>
+			<item value="this."/>
 			<item value="MenuHandler.getMenuItems()"/>
 			<item value="Utils.getMenuItems()"/>
-			<item value="Utils."/>
-			<item value="mainMenuItems"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">

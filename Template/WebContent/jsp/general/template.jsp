@@ -59,7 +59,7 @@
 
 			<!-- Site message -->
 			<div class="sitemessage">
-				<h2>Java - Spring application template</h2>
+				<h2>Test reports</h2>
 			</div>
 		</div>
 
@@ -75,26 +75,19 @@
 				</ul>
 
 				<!-- Navigation item -->
-				<sec:authorize ifAllGranted="ROLE_ADMIN">
+				<sec:authorize ifAllGranted="ROLE_USER">
 					<ul>
-						<li><a href="FCSpiderParametrization">Spider parametrization</a></li>
+						<li><a href="FCSpiderParametrization">Reporte incidentes</a></li>
 					</ul>
 				</sec:authorize>
 				
 				<!-- Navigation item -->
-				<sec:authorize ifAllGranted="ROLE_ADMIN">
+				<sec:authorize ifAllGranted="ROLE_USER">
 					<ul>
-						<li><a href="FCEngineParametrization">Engine parametrization</a></li>
+						<li><a href="FCSpiderParametrization">Novedades</a></li>
 					</ul>
 				</sec:authorize>
-
-				<!-- Navigation item -->
-				<sec:authorize ifAllGranted="ROLE_USER">
-				<ul>
-					<li><a href="FCLogViewer">Log viewer</a></li>
-				</ul>
-				</sec:authorize>
-
+				
 				<!-- Navigation item -->
 				<sec:authorize ifAllGranted="ROLE_ADMIN">
 					<ul>

@@ -1,0 +1,48 @@
+package com.artica.administrator.fc;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+
+public class FCLoggin extends MultiActionController {
+
+	private String logginView;
+	
+	/**
+	 * Loggin
+	 * 
+	 * @param resquest
+	 * @param response
+	 * @return
+	 */
+	public ModelAndView loggin(HttpServletRequest resquest, HttpServletResponse response) {
+		System.out.println("Testing loggin... User: " + resquest.getParameter("") + ", pass: " + resquest.getParameter(""));
+		return new ModelAndView(logginView);
+	}
+	
+	/**
+	 * Loggin
+	 * 
+	 * @param resquest
+	 * @param response
+	 * @return
+	 */
+	public ModelAndView fail(HttpServletRequest resquest, HttpServletResponse response) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("message", "Invalid user or password. Try aggain.");
+		return new ModelAndView(logginView, data);
+	}
+
+	
+	//SETTINGS
+	public void setLogginView(String logginView) {
+		this.logginView = logginView;
+	}
+	
+	
+}

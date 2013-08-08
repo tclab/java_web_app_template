@@ -5,11 +5,12 @@
 	<item section="FCSpiderParametrization" code="param.spider.general" name="General" url="FCSpiderParametrization" parent="" order="1"></item>
 <!-- 	<item section="FCSpiderParametrization" code="param.spider.test" name="Test child general" url="FCSpiderParametrization" parent="param.spider.general" order="1"></item> -->
 	
-	<item section="FCSpiderParametrization" code="param.spider.epg" name="SpiderEPG" url="FCSpiderParametrization.do.spiderEpg" parent="" order="1"></item>
-	<item section="FCSpiderParametrization" code="param.spider.od" name="SpiderOD" url="FCSpiderParametrization.do.spiderOd" parent="" order="2"></item>
-	<item section="FCSpiderParametrization" code="param.spider.rating" name="SpiderRating" url="FCSpiderParametrization.do.spiderRating" parent="" order="3"></item>
-	<item section="FCSpiderParametrization" code="param.spider.channel" name="SpiderChannel" url="FCSpiderParametrization.do.spideChannel" parent="" order="4"></item>
-	<item section="FCSpiderParametrization" code="param.spider.vod" name="SpiderVod" url="FCSpiderParametrization.do.spiderVod" parent="" order="5"></item>
+	<item section="FCSpiderParametrization" code="param.spider.epg" name="Menu 1" url="FCSpiderParametrization.do.spiderEpg" parent="" order="1"></item>
+	<item section="FCSpiderParametrization" code="param.spider.od" name="Menu 2" url="FCSpiderParametrization.do.spiderOd" parent="" order="2"></item>
+	<item section="FCSpiderParametrization" code="param.spider.rating" name="Menu 3" url="FCSpiderParametrization.do.spiderRating" parent="" order="3"></item>
+	<item section="FCSpiderParametrization" code="param.spider.channel" name="Menu 4" url="FCSpiderParametrization.do.spideChannel" parent="" order="4"></item>
+	<item section="FCSpiderParametrization" code="param.spider.vod" name="Menu 5" url="FCSpiderParametrization.do.spiderVod" parent="" order="5"></item>
+	<item section="FCSpiderParametrization" code="param.spider.vod" name="Menu 6" url="FCSpiderParametrization.do.spiderVod" parent="" order="5"></item>
 	
 	<!-- PROVIDER PARAMETRIZATION -->
 <!-- 	<item section="FCuserAdmin" name="Menu item" url="" parent="" order=""></item> -->

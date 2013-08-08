@@ -4,13 +4,13 @@
 
 /* MAIN NAVIGATION */
 .nav3-grid {width:199px; border-bottom:solid 1px rgb(200,200,200);}
-.nav3-grid dt a, .nav3-grid dt a:visited {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(0,116,189); font-weight:bold; font-size:120%;}
-.nav3-grid dd a, .nav3-grid dd a:visited {display:block; min-height:1.7em /*Non-IE6*/; height:auto !important; height:1.7em /*IE6*/; line-height:1.7em; padding:0px 10px 0px 40px; border:none; font-weight:normal; text-decoration:none; color:rgb(0,116,189); font-size:120%;}
-.nav3-grid dt a:hover, .nav3-grid dd a:hover {background-color:rgb(225,225,225); color:rgb(0,116,189); text-decoration:none;}
+.nav3-grid dt a, .nav3-grid dt a:visited {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(130,0,36); font-weight:bold; font-size:120%;}
+.nav3-grid dd a, .nav3-grid dd a:visited {display:block; min-height:1.7em /*Non-IE6*/; height:auto !important; height:1.7em /*IE6*/; line-height:1.7em; padding:0px 10px 0px 40px; border:none; font-weight:normal; text-decoration:none; color:rgb(130,0,36); font-size:120%;}
+.nav3-grid dt a:hover, .nav3-grid dd a:hover {background-color:rgb(225,225,225); color:rgb(130,0,36); text-decoration:none;}
 
-.nav3-grid h4.menu, .nav3-grid h4.menu:visited {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(0,116,189); font-weight:bold; font-size:120%;}
-.nav3-grid h4.menuNoExpand, .nav3-grid h4.menuNoExpand:visited {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(0,116,189); font-weight:bold; font-size:120%;}
-.nav3-grid ul li, .nav3-grid ul li:visited {display:block; min-height:1.7em /*Non-IE6*/; height:auto !important; height:1.7em /*IE6*/; line-height:1.7em; padding:0px 10px 0px 40px; border:none; font-weight:normal; text-decoration:none; color:rgb(0,116,189); font-size:120%;}
+.nav3-grid h4.menu, .nav3-grid h4.menu:visited {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(130,0,36); font-weight:bold; font-size:120%;}
+.nav3-grid h4.menuNoExpand, .nav3-grid h4.menuNoExpand:visited {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(130,0,36); font-weight:bold; font-size:120%;}
+.nav3-grid ul li, .nav3-grid ul li:visited {display:block; min-height:1.7em /*Non-IE6*/; height:auto !important; height:1.7em /*IE6*/; line-height:1.7em; padding:0px 10px 0px 40px; border:none; font-weight:normal; text-decoration:none; color:rgb(130,0,36); font-size:120%;}
 
 .nav3-bullet {width:170px; margin:10px 0 0 20px;}
 .nav3-bullet dt a, .nav3-bullet dt a:visited {line-height:2.0em; padding:0 0 0 10px; background:url(../img/bg_bullet_full_1.gif) no-repeat 0px 50%; text-decoration:none; color:rgb(70,122,167); font-weight:bold; font-size:120%;}
@@ -39,7 +39,7 @@
 .main-navigation .searchform input.button {float:left; width:3.0em; margin-top: 0.5em; padding:1px; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:120%;}
 .main-navigation .searchform input.button:hover {cursor:pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
 
-.main-navigation h1.first {clear:both; margin:0px; padding:4px 20px 3px 20px; background-color:rgb(190,190,190); font-family:"trebuchet ms",arial,sans-serif; color:rgb(0,116,189); font-weight:bold; font-size:150%;}
+.main-navigation h1.first {clear:both; margin:0px; padding:4px 20px 3px 20px; background-color:rgb(190,190,190); font-family:"trebuchet ms",arial,sans-serif; color:rgb(130,0,36); font-weight:bold; font-size:150%;}
 .main-navigation h1 {clear:both; margin:30px 0 20px 0; padding:4px 20px 3px 20px; background:rgb(190,190,190); font-family:"trebuchet ms",arial,sans-serif; color:rgb(255,255,255); font-weight:bold; font-size:150%;}
 .main-navigation h2 {clear:both; margin:20px 10px 10px 20px; font-family:"trebuchet ms",arial,sans-serif; color:rgb(100,100,100); font-weight:bold; font-size:150%;}
 .main-navigation h3 {clear:both; margin:10px 10px 5px 20px; color:rgb(80,80,80); font-weight:bold; font-size:110%;} /* Note: h2 not existent, to make identical to formats for main-navigation for easier exchange */
@@ -54,14 +54,14 @@
 
 /* MAIN CONTENT */
 .main-content h1.pagetitle {margin:0 0 0.4em 0; padding:0 0 2px 0; border-bottom:solid 7px rgb(225,225,225); font-family:"trebuchet ms",arial,sans-serif; color:rgb(100,100,100); font-weight:bold; font-size:220%;}
-.main-content h1.block {clear:both; margin:1.0em 0 0em 0; padding:2px 0 2px 2px; background:rgb(190,190,190); font-family:"trebuchet ms",arial,sans-serif; color:rgb(0,116,189); font-weight:bold; font-size:220%;}
+.main-content h1.block {clear:both; margin:1.0em 0 0em 0; padding:2px 0 2px 2px; background:rgb(190,190,190); font-family:"trebuchet ms",arial,sans-serif; color:rgb(130,0,36); font-weight:bold; font-size:220%;}
 .main-content h1 {clear:both; margin:1.0em 0 0.5em 0; font-family:"trebuchet ms",arial,sans-serif; color:rgb(80,80,80); font-weight:normal; font-size:210%;}
 .main-content h2 {clear:both; margin:1.0em 0 0.5em 0; font-family:"trebuchet ms",arial,sans-serif; color:rgb(80,80,80); font-weight:normal; font-size:170%;}
 .main-content h3 {clear:both; margin:-1.0em 0 0.5em 0; font-family:"trebuchet ms",arial,sans-serif; color:rgb(125,125,125); font-weight:normal; font-size:130%;}
 .main-content h1.side {clear:none;}
 .main-content h2.side {clear:none;}
 .main-content h3.side {clear:none;}
-.main-content h3.resultMessage {margin:0 0 0.4em 0; text-align:center; padding:0 0 2px 0; font-family:"trebuchet ms",arial,sans-serif; color:rgb(0,116,189); font-weight:bold; font-size:130%;}
+.main-content h3.resultMessage {margin:0 0 0.4em 0; text-align:center; padding:0 0 2px 0; font-family:"trebuchet ms",arial,sans-serif; color:rgb(130,0,36); font-weight:bold; font-size:130%;}
 
 .main-content h4 {margin:1.5em 0 1.0em 0; color:rgb(80,80,80); font-family:"trebuchet ms",arial,sans-serif; font-weight:normal; font-size:170%;}
 .main-content h5 {margin:1.5em 0 1.0em 0; color:rgb(80,80,80); font-family:"trebuchet ms",arial,sans-serif; font-size:140%;}
@@ -100,10 +100,10 @@ p.caption {clear:both; margin:0.5em 0 2.0em 20px; text-align:left; color:rgb(80,
 .main img.center {clear:both; float:none; margin:0; padding:1px; border:0px solid rgb(150,150,150);}
 .main img.right {clear:both; float:right; margin:3px 0 7px 10px; padding:1px; border:1px solid rgb(150,150,150);}
 
-.main a {color:rgb(0,116,189); font-weight:bold; text-decoration:none;}
-.main-content h1 a {color:rgb(0,116,189); font-weight:normal; text-decoration:none;}
-.main a:hover {color:rgb(0,116,189);}
-.main a:visited {color:rgb(0,116,189);}
+.main a {color:rgb(130,0,36); font-weight:bold; text-decoration:none;}
+.main-content h1 a {color:rgb(130,0,36); font-weight:normal; text-decoration:none;}
+.main a:hover {color:rgb(130,0,36);}
+.main a:visited {color:rgb(130,0,36);}
 
 .main a img {border:solid 0px rgb(150,150,150);}
 .main a:hover img {border:solid 1px rgb(220,220,220);}

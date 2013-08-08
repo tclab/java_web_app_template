@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:b="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<!-- enables anotations to restricted methods (@Secured) -->
+    <global-method-security pre-post-annotations="enabled"></global-method-security>
+    
+	<!-- Configure url that has to be intercepted -->
+	<http realm="Contacts Realm">
+        <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        
+        <intercept-url pattern="/controller/FCInit**" access="ROLE_USER"/>
+
+        <intercept-url pattern="/controller/FCSpiderParametrization**" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/controller/FCEngineParametrization**" access="ROLE_ADMIN"/>
+        
+        <intercept-url pattern="/controller/FCLogViewer**" access="ROLE_USER"/>
+        <intercept-url pattern="/controller/FCUserAdmin**" access="ROLE_ADMIN"/>
+
+        <!-- Define login page -->
+        <form-login login-page="/controller/FCLoggin" 
+                    default-target-url="/controller/FCInit"
+                    authentication-failure-url="/controller/FCLoggin.do.fail"/>
+                    
+		<!-- Define logout page -->
+        <logout logout-success-url="/controller/FCLoggin"/>
+
+        <http-basic/>
+        <remember-me />
+    </http>
+
+	<!-- AUTHENTICATION MANAGER -->
+	<authentication-manager>
+        <authentication-provider>
+<!--            <password-encoder hash="md5"/> -->
+           <jdbc-user-service data-source-ref="dataSource" 
+           authorities-by-username-query="
+            select admin.userName as username, auth.authority as authority from Administrators admin, Authorities auth
+            where admin.id=auth.AdministratorId and admin.userName= ?"
+            
+            users-by-username-query="select username, password, enabled
+                                        from app_users where username= ?"
+           />
+        </authentication-provider>
+    </authentication-manager>
+</b:beans>

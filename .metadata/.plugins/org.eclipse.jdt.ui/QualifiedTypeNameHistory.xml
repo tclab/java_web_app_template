@@ -13,8 +13,15 @@
 <fullyQualifiedTypeName name="com.artica.administrator.utils.AdminPropHandler"/>
 <fullyQualifiedTypeName name="org.w3c.dom.NamedNodeMap"/>
 <fullyQualifiedTypeName name="com.artica.administrator.bo.MenuItem"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.Locale"/>
+<fullyQualifiedTypeName name="com.sophos.administrator.conf.Constants"/>
+<fullyQualifiedTypeName name="com.sophos.administrator.fc.props.ConfPropHandler"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.sophos.administrator.bo.users.User"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="com.sophos.administrator.dao.users.UserAdminDAO"/>
+<fullyQualifiedTypeName name="com.sophos.administrator.fc.props.PropHandler"/>
 </qualifiedTypeNameHistroy>

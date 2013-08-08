@@ -1,0 +1,10 @@
+package com.sophos.administrator.bo.users;
+
+public class User {
+	
+	public String username;
+	public String password;
+	public boolean admin;
+	public boolean user;
+
+}

@@ -13,12 +13,7 @@
         <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         
         <intercept-url pattern="/controller/FCInit**" access="ROLE_USER"/>
-
-        <intercept-url pattern="/controller/FCSpiderParametrization**" access="ROLE_ADMIN"/>
-        <intercept-url pattern="/controller/FCEngineParametrization**" access="ROLE_ADMIN"/>
-        
-        <intercept-url pattern="/controller/FCLogViewer**" access="ROLE_USER"/>
-        
+        <intercept-url pattern="/controller/FCSpiderParametrization**" access="ROLE_USER"/>
         <intercept-url pattern="/controller/FCUserAdmin**" access="ROLE_ADMIN"/>
 
         <!-- Define login page -->

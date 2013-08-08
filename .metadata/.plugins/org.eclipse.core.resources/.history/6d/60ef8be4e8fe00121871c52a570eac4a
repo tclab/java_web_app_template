@@ -1,0 +1,788 @@
+package com.sophos.administrator.dao.props;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.sophos.administrator.bo.props.Property;
+import com.sophos.administrator.bo.props.RecomLogRecord;
+import com.sophos.administrator.dao.exceptions.ConnectionException;
+import com.sophos.administrator.dao.utils.ConnectionHandler;
+import com.sophos.administrator.props.ConfPropHandler;
+
+public class PropsHandlerDAO {
+
+	/* 
+	 * ***************
+	 * HANDLE LOGS
+	 * ***************
+	 */
+	public ArrayList<RecomLogRecord> getRecomLogs(){
+		Connection connection = null;
+        PreparedStatement logsStatement = null;
+        ResultSet resultLogs = null;
+        ArrayList<RecomLogRecord> logs = new ArrayList<RecomLogRecord>();
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "SELECT * FROM tb_logs;";
+            
+            logsStatement = connection.prepareStatement(sql);
+            resultLogs = logsStatement.executeQuery();
+            
+            //Look for logs.
+            while (resultLogs.next()) {
+				logs.add(new RecomLogRecord(
+						resultLogs.getString("date"),
+						resultLogs.getString("level"),
+						resultLogs.getString("message"))
+				);
+            }
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (logsStatement != null && !logsStatement.isClosed()) {
+					logsStatement.close();
+				}
+				if (resultLogs != null && !resultLogs.isClosed()) {
+					resultLogs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+		
+		return logs;
+	}
+	
+	
+	
+	
+	/* 
+	 * ***************
+	 * HANDLE PROPERTIES
+	 * ***************
+	 */
+	public ArrayList<Property> getEngineProperties(){
+		ArrayList<Property> properties = new ArrayList<Property>();
+		Connection connection = null;
+		PreparedStatement props = null;
+		ResultSet result = null;
+
+		try {
+			connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+			String sql = "SELECT name, value  FROM tb_props WHERE section = 'engine';";
+			props = connection.prepareStatement(sql);
+			result = props.executeQuery();
+
+			while (result.next()) {
+				properties.add(new Property(
+						result.getString("name"), 
+						result.getString("value"))
+				);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHandler.closeConnection(connection);
+			try {
+				if (props != null && !props.isClosed()) {
+					props.close();
+				}
+				if (result != null && !result.isClosed()) {
+					result.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return properties;
+	}
+	
+	
+	/**
+	 * Gets spider frequency
+	 * @param spider
+	 * @return
+	 */
+	public String getFrequency(String spider) {
+		String frequency = null;
+
+		Connection connection = null;
+		PreparedStatement sections = null;
+		ResultSet result = null;
+
+		try {
+			connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+			String sql = "SELECT ds.description, sc.frequency  FROM tb_datasource AS ds, tb_schedule AS sc WHERE sc.fkDataSource = ds.id AND description = ?;";
+			sections = connection.prepareStatement(sql);
+			sections.setString(1, spider);
+			result = sections.executeQuery();
+
+			while (result.next()) {
+				frequency = result.getString("frequency");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHandler.closeConnection(connection);
+			try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+				if (result != null && !result.isClosed()) {
+					result.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return frequency;
+	}
+	
+	/**
+	 * Sets spider frequency
+	 * @param spider
+	 * @param frequency
+	 * @return
+	 */
+	public boolean setFrequency(String spider, String frequency) {
+
+		Connection connection = null;
+		PreparedStatement sections = null;
+		boolean returnRes = false; 
+
+		try {
+			connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+			String sql = "UPDATE tb_schedule SET frequency = ? WHERE fkDataSource = (select id from (SELECT ds.id FROM tb_datasource AS ds, tb_schedule AS sc WHERE sc.fkDataSource = ds.id AND description = ? limit 1) as c);";
+			
+			sections = connection.prepareStatement(sql);
+			sections.setString(1, frequency);
+			sections.setString(2, spider);
+			int result = sections.executeUpdate();
+
+			if (result != 0) {
+				returnRes = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHandler.closeConnection(connection);
+			try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return returnRes;
+
+	}
+	
+	
+	/* 
+	 * ***************
+	 * HANDLE METADATA
+	 * ***************
+	 */
+	
+	/**
+	 * Inserts a metadata item.
+	 */
+	public boolean insertVodMetadata(String keyName, String description) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "INSERT INTO tb_metadata (keyName, description, fkContentType) VALUES (?,?,(SELECT id FROM tb_contenttype WHERE type = 'VOD'));";
+            
+            sections = connection.prepareStatement(sql);
+            sections.setString(1, keyName);
+            sections.setString(2, description);
+            int result = sections.executeUpdate();
+            res = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+        return res;
+	}
+	
+	/**
+	 * Deletes a metadata item.
+	 */
+	public boolean deleteContMetadata(Long keyName) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "DELETE FROM tb_metadata WHERE id = ?;";
+            
+            sections = connection.prepareStatement(sql);
+            sections.setLong(1, keyName);
+            int result = sections.executeUpdate();
+            res = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+        return res;
+	}
+	
+	
+	
+	/**
+	 * Updates the content of a metadata.
+	 * @param id
+	 * @param keyName
+	 * @param description
+	 * @return
+	 */
+	public boolean setVodMetadata(Long id, String keyName, String description) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "UPDATE tb_metadata SET keyName = ?, description = ? WHERE id = ?;";
+            sections = connection.prepareStatement(sql);
+            sections.setString(1, keyName);
+            sections.setString(2, description);
+            sections.setLong(3, id);
+            
+            int result = sections.executeUpdate();
+            res = true;
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+
+		return res;
+	}
+	
+	
+	/**
+	 * Inserts a metadata item.
+	 */
+	public boolean insertEpgMetadata(String keyName, String description) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "INSERT INTO tb_metadata (keyName, description, fkContentType) VALUES (?,?,(SELECT id FROM tb_contenttype WHERE type = 'LIVE'));";
+            sections = connection.prepareStatement(sql);
+            sections.setString(1, keyName);
+            sections.setString(2, description);
+            int result = sections.executeUpdate();
+            res = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+        return res;
+	}
+	
+	
+	
+	/**
+	 * Updates the content of a metadata.
+	 * @param id
+	 * @param keyName
+	 * @param description
+	 * @return
+	 */
+	public boolean setEpgMetadata(Long id, String keyName, String description) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "UPDATE tb_metadata SET keyName = ?, description = ? WHERE id = ?;";
+            sections = connection.prepareStatement(sql);
+            sections.setString(1, keyName);
+            sections.setString(2, description);
+            sections.setLong(3, id);
+            
+            int result = sections.executeUpdate();
+            res = true;
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+
+		return res;
+	}
+
+	
+	/**
+	 * Inserts a metadata item.
+	 */
+	public boolean insertChannelMetadata(String keyName, String description) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "INSERT INTO tb_channelmetadatakey (keyName, description) VALUES (?,?);";
+            sections = connection.prepareStatement(sql);
+            sections.setString(1, keyName);
+            sections.setString(2, description);
+            int result = sections.executeUpdate();
+            res = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+        return res;
+	}
+	
+	/**
+	 * Deletes a metadata item.
+	 */
+	public boolean deleteChannelMetadata(Long metaId) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "DELETE FROM tb_channelmetadatakey WHERE id = ?;";
+            sections = connection.prepareStatement(sql);
+            sections.setLong(1, metaId);
+            int result = sections.executeUpdate();
+            res = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+        return res;
+	}
+	
+	
+	
+	/**
+	 * Updates the content of a metadata.
+	 * @param id
+	 * @param keyName
+	 * @param description
+	 * @return
+	 */
+	public boolean setChannelMetadata(Long id, String keyName, String description) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "UPDATE tb_channelmetadatakey SET keyName = ?, description = ? WHERE id = ?;";
+            sections = connection.prepareStatement(sql);
+            sections.setString(1, keyName);
+            sections.setString(2, description);
+            sections.setLong(3, id);
+            
+            int result = sections.executeUpdate();
+            res = true;
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+
+		return res;
+	}
+	
+	/**
+	 * Inserts a metadata item.
+	 */
+	public boolean insertPageMetadata(String keyName, String description) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "INSERT INTO tb_pagemetadatakey (keyName, description) VALUES (?,?);";
+            sections = connection.prepareStatement(sql);
+            sections.setString(1, keyName);
+            sections.setString(2, description);
+            int result = sections.executeUpdate();
+            res = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+        return res;
+	}
+	
+	/**
+	 * Deletes a metadata item.
+	 */
+	public boolean deletePageMetadata(Long keyName) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "DELETE FROM tb_pagemetadatakey WHERE id = ?;";
+            sections = connection.prepareStatement(sql);
+            sections.setLong(1, keyName);
+            int result = sections.executeUpdate();
+            res = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+        return res;
+	}
+	
+	
+	
+	/**
+	 * Updates the content of a metadata.
+	 * @param id
+	 * @param keyName
+	 * @param description
+	 * @return
+	 */
+	public boolean setPageMetadata(Long id, String keyName, String description) {
+		boolean res = false;
+		Connection connection = null;
+        PreparedStatement sections = null;
+
+        try {
+        	connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+            String sql = "UPDATE tb_pagemetadatakey SET keyName = ?, description = ? WHERE id = ?;";
+            sections = connection.prepareStatement(sql);
+            sections.setString(1, keyName);
+            sections.setString(2, description);
+            sections.setLong(3, id);
+            
+            int result = sections.executeUpdate();
+            res = true;
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	ConnectionHandler.closeConnection(connection);
+        	try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+
+		return res;
+	}
+	
+	
+	
+	
+	
+	/**
+	 * Gets spider frequency
+	 * @param spider
+	 * @return
+	 */
+	public String getProp(String propName) {
+		String value = null;
+
+		Connection connection = null;
+		PreparedStatement sections = null;
+		ResultSet result = null;
+
+		try {
+			connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+			String sql = "SELECT * FROM tb_props WHERE name = ?;";
+			sections = connection.prepareStatement(sql);
+			sections.setString(1, propName);
+
+			result = sections.executeQuery();
+
+			while (result.next()) {
+				value = result.getString("value");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHandler.closeConnection(connection);
+			try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+				if (result != null && !result.isClosed()) {
+					result.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return value;
+	}
+	
+	/**
+	 * Gets spider frequency
+	 * @param spider
+	 * @return
+	 */
+	public String getProp(String propName, Connection connection) {
+		String value = null;
+
+		PreparedStatement sections = null;
+		ResultSet result = null;
+
+		try {
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+			String sql = "SELECT * FROM tb_props WHERE name = ?;";
+			sections = connection.prepareStatement(sql);
+			sections.setString(1, propName);
+
+			result = sections.executeQuery();
+
+			while (result.next()) {
+				value = result.getString("value");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+				if (result != null && !result.isClosed()) {
+					result.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return value;
+	}
+	
+	/**
+	 * Gets spider frequency
+	 * @param spider
+	 * @return
+	 */
+	public boolean setProp(String propName, String propValue) {
+		Connection connection = null;
+		PreparedStatement sections = null;
+		boolean res = false;
+
+		try {
+			connection = ConnectionHandler.getConeccion();
+			if (connection == null) {
+				throw new ConnectionException(ConfPropHandler.getConfProp("msg.exception.connectionExcep"));
+			}
+			
+			String sql = "UPDATE tb_props SET value = ? WHERE name = ?;";
+			sections = connection.prepareStatement(sql);
+			sections.setString(1, propValue);
+			sections.setString(2, propName);
+
+			int result = sections.executeUpdate();
+			if (result != 0) {
+				res = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHandler.closeConnection(connection);
+			try {
+				if (sections != null && !sections.isClosed()) {
+					sections.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return res;
+	}
+	
+	//TEST
+	public static void main(String [] args){
+		
+//		System.out.println("Propiedad antes: " + new PropsHandlerDAO().getProp("global.propsLocation"));
+//		new PropsHandlerDAO().setProp("global.propsLocation","mod location");
+//		
+//		System.out.println("Propiedad despues: " + new PropsHandlerDAO().getProp("global.propsLocation"));
+		
+	}
+}
