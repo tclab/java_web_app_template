@@ -1,0 +1,50 @@
+package com.sophos.reports.bo.users;
+
+public class User {
+	
+	public String username;
+	public String password;
+	public boolean admin;
+	public boolean user;
+	
+	public User() {
+		super();
+	}
+	
+	public User(String username, String password, boolean admin, boolean user) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.admin = admin;
+		this.user = user;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public boolean isAdmin() {
+		return admin;
+	}
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+	public boolean isUser() {
+		return user;
+	}
+	public void setUser(boolean user) {
+		this.user = user;
+	}
+	
+	
+
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/libs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/aopalliance-1.0.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/servlet/servlet-api-5.0.16.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/db/mysql-connector-java-5.1.15-bin.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/log/log4j-1.2.16.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.aop-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.asm-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.aspects-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.beans-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.context-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.context.support-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.core-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.expression-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.instrument-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.instrument.tomcat-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.jdbc-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.jms-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.orm-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.oxm-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.test-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.transaction-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.web-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.web.portlet-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.web.servlet-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/org.springframework.web.struts-3.1.0.M1.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-3.0.5.RELEASE.zip"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-3.1.0.RELEASE.zip"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-acl-3.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-acl-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-aspects-3.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-aspects-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-cas-client-3.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-cas-client-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-config-3.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-config-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-core-3.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-core-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-ldap-3.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-ldap-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-openid-3.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-openid-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-taglibs-3.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-taglibs-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-web-3.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="TEMPLATE_LIBS/spring/framework/spring-security-web-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

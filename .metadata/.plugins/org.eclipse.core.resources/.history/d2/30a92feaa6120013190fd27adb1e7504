@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p" 
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- VIEW RESOLVER -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="basename" value="views"/>
+		<property name="defaultParentView" value="templateView"/>
+	</bean>
+
+
+	<!-- MAPPING HANDLER -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/FCInit**">FCInit</prop>
+				<prop key="/FCUserAdmin**">FCUserAdmin</prop>
+				<prop key="/FCLogout**">FCLogout</prop>
+				<prop key="/FCLoggin**">FCLoggin</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<!-- CONTROLS -->
+	<!-- Application initialization -->
+	<bean id="FCInit" class="co.tclab.template.fc.init.FCInit">
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+				<property name="mappings">
+					<props>
+						<prop key="/FCInit">init</prop>
+						<prop key="/FCInit.do.loggin">loggin</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+<!-- 		<property name="logginView" value="logginView" /> -->
+		<property name="logginSuccesView" value="logginSuccesView" />
+	</bean>
+	
+	
+	<!-- User administration -->
+	<bean id="FCUserAdmin" class="co.tclab.template.fc.FCUserAdmin">
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+				<property name="mappings">
+					<props>
+						<prop key="/FCUserAdmin">init</prop>
+						<prop key="/FCUserAdmin.do.saveUser">saveUser</prop>
+						<prop key="/FCUserAdmin.do.deleteUser">deleteUser</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+		<property name="userAdmView" value="userAdmView" />
+	</bean>
+	
+	<!-- Log out from application -->
+	<bean id="FCLogout" class="co.tclab.template.fc.FCLogout">
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+				<property name="mappings">
+					<props>
+						<prop key="/FCLogout">logOut</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+		<property name="logView" value="logView" />
+	</bean>
+	
+	<!-- Loggin into the application -->
+	<bean id="FCLoggin" class="co.tclab.template.fc.FCLoggin">
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+				<property name="mappings">
+					<props>
+						<prop key="/FCLoggin">loggin</prop>
+						<prop key="/FCLoggin.do.fail">fail</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+		<property name="logginView" value="logginView" />
+	</bean>
+	
+</beans>

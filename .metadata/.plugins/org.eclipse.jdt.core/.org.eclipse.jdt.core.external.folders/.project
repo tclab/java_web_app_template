@@ -10,9 +10,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>.link2</name>
+			<name>.link1</name>
 			<type>2</type>
-			<location>C:/TJ/Proyectos/Sophos/TestReports/libs</location>
+			<location>/media/juan/job/tclab/proyectos/java_web_app_template/libs</location>
 		</link>
 	</linkedResources>
 </projectDescription>

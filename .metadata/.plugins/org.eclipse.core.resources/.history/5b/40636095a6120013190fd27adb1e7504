@@ -1,0 +1,41 @@
+package com.sophos.reports.utils;
+
+import java.util.ArrayList;
+
+import co.tclab.template.bo.MenuItem;
+
+import com.sophos.reports.dao.MenuDAO;
+
+public class MenuHandler {
+
+	/**
+	 * Processes the menu of a section.
+	 * @param sectionName
+	 * @return
+	 */
+	public ArrayList<MenuItem> processMenu(String sectionName){
+		
+		ArrayList<MenuItem> itemsBySection = new MenuDAO().getMenuItems(sectionName);
+		for (MenuItem menuItem : itemsBySection) {
+			menuItem = getChilds(menuItem);
+		}
+		return itemsBySection;
+	}
+	
+	/**
+	 * Sets child nodes of the given menu item.
+	 * @param menuItem
+	 * @return
+	 */
+	public MenuItem getChilds(MenuItem menuItem){
+		ArrayList<MenuItem> childs = new MenuDAO().getChilds(menuItem.getCode());
+		if (childs.size() != 0) {
+			menuItem.setChildItems(childs);
+			
+			for (MenuItem childNode : childs) {
+				childNode = getChilds(childNode);
+			}
+		}
+		return menuItem;
+	}
+}
